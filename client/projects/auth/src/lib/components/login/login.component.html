@@ -1,0 +1,54 @@
+<div class="container my-3">
+  <div class="row text-center mb-5">
+    <div class="col-md-12 p-3">
+      <h2>Login</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="form-group">
+          <label for="usernam">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            formControlName="username"
+            placeholder="Username"
+          />
+          <div *ngIf="submitted && formValue.username.errors">
+            <small
+              *ngIf="formValue.username.errors.required"
+              class="form-text text-muted"
+              >Username is required</small
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <div *ngIf="submitted && formValue.password.errors">
+            <small
+              *ngIf="formValue.password.errors.required"
+              class="form-text text-muted"
+              >Password is required</small
+            >
+          </div>
+        </div>
+        <div *ngIf="error" class="my-3">
+          <small class="form-text text-muted">{{ error | json }}</small>
+        </div>
+        <div class="d-flex flex-row-reverse">
+          <button type="submit" class="btn btn-primary" style="text-align: right">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

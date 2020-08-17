@@ -1,0 +1,65 @@
+<div class="container-fluid" style='position: relative;'>
+  <div >
+    <h3>List of freelance developer</h3>
+  </div>
+  <table class="table table-bordered table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Profile</th>
+            <th scope="col" style='width:10%'>Name</th>
+
+            <th scope="col" style='width:10%'>Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col" style='width:30%'>Skill Sets</th>
+            <th scope="col" style='width:30%'>Hobby</th>
+            <th scope="col" style='width:10%'>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let user of users; let i = index'>
+          <th scope="row">{{i + 1}}</th>
+          <td>
+            <div style='padding:0.5em'>
+              <img src="assets/images/user_avatar.png" alt="user image" width="40" height="40" style="border-radius: 50%;">
+            </div>
+          </td>
+          <td class="padding:none">
+            <div >
+              <p class="m-0" [style.color]="user.username? '' :'grey'">{{user.username || 'no username'}}</p>
+            </div>
+          </td>
+          <td>
+            <div style='padding:0.5em'>
+              <p [style.color]="user.email? '' :'grey'">{{user.email || 'no email'}}</p>
+            </div>
+          </td>
+          <td>
+            <div style='padding:0.5em'>
+              <p [style.color]="user.phoneNumber? '' :'grey'">{{user.phoneNumber || 'no phone number'}}</p>
+            </div>
+          </td>
+          <td>
+            <div style='padding:0.5em'>
+              <p [style.color]="user.skillSets? '' :'grey'">{{user.skillSets || 'no skill sets'}}</p>
+            </div>
+          </td>
+          <td>
+            <div style='padding:0.5em'>
+              <p [style.color]="user.hobby? '' :'grey'">{{user.hobby || 'no hobby'}}</p>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-primary" (click)="updateUser(user)">
+                edit
+              </button>
+              <button class="btn btn-danger" (click)="deleteUser(user._id)">
+                delete
+              </button>
+            </div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

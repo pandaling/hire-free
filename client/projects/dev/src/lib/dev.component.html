@@ -1,0 +1,105 @@
+<div class="container my-3">
+  <div class="row text-center mb-5">
+    <div class="col-md-12 p-3">
+      <h2>New Developer</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form [formGroup]="registerNewDevForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            formControlName="username"
+            placeholder="Username"
+          />
+          <div *ngIf="submitted && formValue.username.errors">
+            <small
+              *ngIf="formValue.username.errors.required"
+              class="form-text text-muted"
+              >Username is required</small
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="mail@example.com"
+            formControlName="email"
+          />
+          <div *ngIf="submitted && formValue.email.errors">
+            <small
+              *ngIf="formValue.email.errors.required"
+              class="form-text text-muted"
+              >Email is required</small
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phoneNumber"
+            placeholder="phone number"
+            formControlName="phoneNumber"
+          />
+          <div *ngIf="submitted && formValue.phoneNumber.errors">
+            <small
+              *ngIf="formValue.phoneNumber.errors.required"
+              class="form-text text-muted"
+              >phone number is required</small
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="skillSets">Skill Sets</label>
+          <input
+            type="text"
+            class="form-control"
+            id="skillSets"
+            placeholder="e.g. nodejs, javascript, html5, css"
+            formControlName="skillSets"
+          />
+          <div *ngIf="submitted && formValue.skillSets.errors">
+            <small
+              *ngIf="formValue.skillSets.errors.required"
+              class="form-text text-muted"
+              >Skill sets is required</small
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="hobby">Hobby</label>
+          <input
+            type="textarea"
+            class="form-control"
+            id="hobby"
+            placeholder="e.g. I like to play badminton"
+            formControlName="hobby"
+          />
+          <div *ngIf="submitted && formValue.hobby.errors">
+            <small
+              *ngIf="formValue.hobby.errors.required"
+              class="form-text text-muted"
+              >Hobby is required</small
+            >
+          </div>
+        </div>
+        <div *ngIf="error" class="my-3">
+          <small class="form-text text-danger">{{ error | json }}</small>
+        </div>
+        <div class="d-flex flex-row-reverse">
+          <button type="submit" class="btn btn-primary" style="text-align: right">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
